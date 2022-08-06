@@ -6,15 +6,21 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 
-//Configure
+//Configure metodu
+
+//CSS gibi kutuphanelerin calismasi icin yazilmasi sart
+app.UseStaticFiles();
+
 app.UseRouting();
 
 //app.MapGet("/", () => "Hello World!");
 
 //Default endpoint semasi ({controller:Home}/{action:Index}/{id?}) 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Test}/{action=Index}/{id?}"
-    );
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Blog}/{action=Index}/{id?}");
+});
 
 app.Run();

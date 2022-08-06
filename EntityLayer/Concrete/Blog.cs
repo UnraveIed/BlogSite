@@ -12,10 +12,10 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int BlogId { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public string ThumbnailImage { get; set; }
-        public string Image { get; set; }
+        public string? Title { get; set; }
+        public string? Content { get; set; }
+        public string? ThumbnailImage { get; set; }
+        public string? Image { get; set; }
         public DateTime CreateDate { get; set; }
         public bool Status { get; set; } = true;
 

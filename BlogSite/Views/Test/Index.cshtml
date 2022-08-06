@@ -1,4 +1,5 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Category>
 @{
     Layout = null;
 }
@@ -11,5 +12,24 @@
     <title>Index</title>
 </head>
 <body>
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Kategori Adi</th>
+            <th>Durumu</th>
+            <th>Detaylar</th>
+            <th>Sil</th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.CategoryId</td>
+                <td>@item.Name</td>
+                <td>@item.Status</td>
+                <td><a href="#" class="btn btn-success">Detaylar</a></td>
+                <td><a href="#" class="btn btn-danger">Sil</a></td>
+            </tr>
+        }
+    </table>
 </body>
 </html>

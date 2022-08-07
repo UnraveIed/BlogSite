@@ -13,6 +13,9 @@ var app = builder.Build();
 //CSS gibi kutuphanelerin calismasi icin yazilmasi sart
 app.UseStaticFiles();
 
+//Error Page Yapisi icin
+app.UseStatusCodePagesWithReExecute("/ErrorPage/Error1/","?code={0}");
+
 app.UseRouting();
 
 //app.MapGet("/", () => "Hello World!");

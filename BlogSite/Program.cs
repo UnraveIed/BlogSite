@@ -1,3 +1,5 @@
+using Newtonsoft.Json.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //Configure Services?

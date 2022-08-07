@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace BlogSite.Controllers
 {
@@ -12,8 +14,19 @@ namespace BlogSite.Controllers
             return View();
         }
 
+        [HttpGet]
         public PartialViewResult PartialAddComment()
         {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public PartialViewResult PartialAddComment(Comment c)
+        {
+            c.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            c.Status = true;
+            c.BlogId = 10;
+            cm.Add(c);
             return PartialView();
         }
 

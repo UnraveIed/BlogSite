@@ -21,7 +21,7 @@ namespace BlogSite.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult PartialAddComment(Comment c)
+        public IActionResult PartialAddComment(Comment c)
         {
             c.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             c.Status = true;

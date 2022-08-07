@@ -1,15 +1,39 @@
 ﻿<div class="comment-top">
     <h4>Bir Yorum Yapin</h4>
     <div class="comment-bottom">
-        <form action="/Comment/PartialAddComment/" method="post">
-        <input class="form-control" type="text" name="UserName" placeholder="Adiniz Soyadiniz" required="">
-        <input class="form-control" type="text" name="Title" placeholder="Baslik" required="">
+        <form method="post">
+        <input class="form-control" type="text" id="txtName" placeholder="Adiniz Soyadiniz" required="">
+        <input class="form-control" type="text" id="txtTitle" placeholder="Baslik" required="">
 
-        <textarea class="form-control" name="Content" placeholder="Yorumunuz..." required=""></textarea>
-        <button type="submit" class="btn btn-primary submit">Yorum Yap</button>
+        <textarea class="form-control tContent" id="txtContent" placeholder="Yorumunuz..." required=""></textarea>
+        <button type="submit" id="yorum" class="btn btn-primary submit">Yorum Yap</button>
         </form>
     </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+$("#yorum").click(function() {
+    let values = {
+        UserName: $("#txtName").val(),
+        Title: $("#txtTitle").val(),
+        Content: $(".tContent").val()
+    };
+
+    $.ajax({
+        type : "post",
+        url: "@Url.Action("PartialAddComment","Comment")",
+        data : values,
+        success: function(func) {
+            let result = jQuery.parseJSON(func);
+            alert("Basariyla eklendi.");
+        }
+    });
+})
+
+</script>
 
 
 

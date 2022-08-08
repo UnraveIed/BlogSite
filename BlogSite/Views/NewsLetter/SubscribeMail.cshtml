@@ -8,8 +8,9 @@
 
 </div>
 
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <script type="text/javascript">
     $("#btnAdd").click(function() {
         let values = {
@@ -20,9 +21,11 @@
             type: "post",
             url: "/NewsLetter/SubscribeMail/",
             data: values,
-            success: function(func) {
-                let result = jQuery.parseJSON(func);
-                alert("Basarili");
+            success: function() {
+                swal("Basarili!", "Mailiniz basariyla gonderilmistir!", "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Hata!", "Mail gonderilirken bir hata meydana geldi", "error");
             }
         });
     });

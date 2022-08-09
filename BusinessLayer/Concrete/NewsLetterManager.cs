@@ -22,5 +22,25 @@ namespace BusinessLayer.Concrete
         {
             _letterDal.Insert(entity);
         }
+
+        public void Delete(NewsLetter entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<NewsLetter> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public NewsLetter GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(NewsLetter entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

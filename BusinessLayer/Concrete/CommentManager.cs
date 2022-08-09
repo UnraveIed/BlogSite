@@ -18,12 +18,12 @@ namespace BusinessLayer.Concrete
             _commentDal = commentDal;
         }
 
-        public void Add(Comment comment)
+        public void Add(Comment entity)
         {
-            _commentDal.Insert(comment);
+            _commentDal.Insert(entity);
         }
 
-        public void Delete(Comment comment)
+        public void Delete(Comment entity)
         {
             throw new NotImplementedException();
         }
@@ -42,7 +42,7 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
-        public void Update(Comment comment)
+        public void Update(Comment entity)
         {
             throw new NotImplementedException();
         }

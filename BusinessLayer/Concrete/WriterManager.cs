@@ -30,12 +30,12 @@ namespace BusinessLayer.Concrete
 
         public List<Writer> GetAll()
         {
-            throw new NotImplementedException();
+            return _writerDal.GetAll();
         }
 
         public Writer GetById(int id)
         {
-            throw new NotImplementedException();
+            return _writerDal.GetById(id);
         }
 
         public void Update(Writer entity)

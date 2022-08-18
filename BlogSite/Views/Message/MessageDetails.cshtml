@@ -1,0 +1,21 @@
+﻿@using EntityLayer.Concrete
+@model Message2
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Mesaj Detay Sayfasi</h1>
+
+
+    @Html.Label("Mesaj Id")
+    @Html.TextBoxFor(x=> x.MessageId, new{@class="form-control"})
+    <br />
+    @Html.Label("Mesaj Basligi")
+    @Html.TextAreaFor(x=>x.Subject, 20,3, new{@class="form-control"})
+    <br />
+    @Html.Label("Mesaj Icerigi")
+    @Html.TextBoxFor(x=>x.MessageDetails, new{@class="form-control"})
+    <br />
+    <button class="btn btn-success">Mesajlara Don</button>
+

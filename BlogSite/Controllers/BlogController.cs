@@ -29,7 +29,7 @@ namespace BlogSite.Controllers
 
         public IActionResult BlogListByWriter()
         {           
-            var values = bm.GetListWithCategoryByWriter(1);
+            var values = bm.GetListWithCategoryByWriter(int.Parse(User.Identity.Name));
             return View(values);
         }
 
@@ -54,7 +54,7 @@ namespace BlogSite.Controllers
             {
                 b.Status = true;
                 b.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                b.WriterId = 1;
+                b.WriterId = int.Parse(User.Identity.Name);
                 bm.Add(b);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }

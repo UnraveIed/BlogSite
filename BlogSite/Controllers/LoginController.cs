@@ -26,7 +26,8 @@ namespace BlogSite.Controllers
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, w.Mail)
+                    new Claim(ClaimTypes.Email, dataValue.Mail),
+                    new Claim(ClaimTypes.Name, dataValue.WriterId.ToString()),
                 };
 
                 var userIdentity = new ClaimsIdentity(claims,"a");
@@ -35,7 +36,7 @@ namespace BlogSite.Controllers
 
                 await HttpContext.SignInAsync(principal);
 
-                return RedirectToAction("Index", "Writer");
+                return RedirectToAction("Index", "Dashboard");
             }
             else
             {

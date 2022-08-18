@@ -11,7 +11,7 @@ namespace BlogSite.ViewComponents.Writer
 
         public IViewComponentResult Invoke()
         {
-            var values = wm.GetById(1);
+            var values = wm.GetById(int.Parse(User.Identity.Name));
             return View(values);
         }
     }

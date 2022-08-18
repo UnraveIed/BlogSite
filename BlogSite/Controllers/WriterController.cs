@@ -45,7 +45,7 @@ namespace BlogSite.Controllers
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var writerValues = _writer.GetById(1);
+            var writerValues = _writer.GetById(int.Parse(User.Identity.Name));
             return View(writerValues);
         }
         [AllowAnonymous]

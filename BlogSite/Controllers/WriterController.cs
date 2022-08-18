@@ -87,7 +87,7 @@ namespace BlogSite.Controllers
                 var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterImageFiles/", newImageName);
                 var stream = new FileStream(location, FileMode.Create);
                 model.Image.CopyTo(stream);
-                w.Image = newImageName;
+                w.Image = "/WriterImageFiles/" + newImageName;
             }
             w.Mail = model.Mail;
             w.Name = model.Name;

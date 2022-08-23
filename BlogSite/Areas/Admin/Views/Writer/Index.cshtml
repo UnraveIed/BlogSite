@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Yazar Ajax Islemleri</h1>
+<br />
+<button type="button" id="btnGetList" class="btn btn-outline-primary">Yazar Listesi</button>
+<button type="button" id="btnGetById" class="btn btn-outline-success">Yazar Getir</button>
+<button type="button" id="btnAddWriter" class="btn btn-outline-info">Yazar Ekle</button>
+<button type="button" id="btnDeleteWriter" class="btn btn-outline-danger">Yazar Sil</button>
+<button type="button" id="btnUpdateWriter" class="btn btn-outline-warning">Yazar Guncelle</button>
+<br />
+<div id="writerList">
+    Buraya Yazarlar Gelecek
+</div>
+<br />
+<div id="writerGet">
+    Buraya Bir Yazar Gelecek
+</div>
+<br />
+<div>
+    <input type="text" id="writerId" placeholder="Yazar Id Degeri Giriniz" class="form-control" />
+</div>
+<br />
+<div>
+    <input type="text" class="form-control" id="txtWriterName" placeholder="Yazar Adi" />
+    <br />
+</div>
+
+@section scripts{
+    <script>
+        $("#btnGetList").click(function() {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/Admin/Writer/WriterList",
+                success: function(func) {
+                    let w = jQuery.parseJSON(func);
+                    console.log(func);
+                    let tableHtml = `<table class = "table table-bordered"> <tr><th> Yazar Id</th> <th> Yazar Adi </th> </tr>`;
+                    $.each(w, (index, value) => {
+                        tableHtml += `<tr> <td>${value.Id}</td> <td> ${value.Name} </td> </tr>`
+                    });
+                    tableHtml += "</table>";
+                    $("#writerList").html(tableHtml);
+                }
+            });
+        });
+
+        $("#btnGetById").click(x => {
+            let id = $("#writerId").val();
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "get",
+                url: "/Admin/Writer/GetWriterById",
+                data: { writerId: id },
+                success: function(func) {
+                    let w = jQuery.parseJSON(func);
+                    console.log(w);
+
+                    let getValue = `<table class="table table-bordered"> <tr> <th>Yazar Id</th> <th> Yazar Adi </th> </tr> <tr> <td>${w.Id}</td> <td>${w.Name}</td> </tr> </table>`;
+
+                    $("#writerGet").html(getValue);
+                }
+            })
+        });
+
+        $("#btnAddWriter").click(function() {
+            debugger;
+            let writer = {
+                Id: $("#writerId").val(),
+                Name: $("#txtWriterName").val()
+            };
+
+            $.ajax({
+                type: "post",
+                url: "/Admin/Writer/AddWriter",
+                data: writer,
+                success: function(func) {
+                    let result = jQuery.parseJSON(func);
+                    alert("Yazar ekleme islemi basarili bir sekilde gerceklesti");
+                }
+            })
+        });
+
+        $("#btnDeleteWriter").click(x => {
+            let id = $("#writerId").val();
+
+            $.ajax({
+                url: "/Admin/Writer/DeleteWriter/" + id,
+                type: "post",
+                dataType: "json",
+                success: function(func) {
+                    alert("Yazar silme islemi basarili bir sekilde gerceklesti");
+                }
+            });
+        });
+
+        $("#btnUpdateWriter").click(function() {
+            debugger;
+            let writer = {
+                Id: $("#writerId").val(),
+                Name: $("#txtWriterName").val()
+            };
+
+            $.ajax({
+                type: "post",
+                url: "/Admin/Writer/UpdateWriter",
+                data: writer,
+                success: function(func) {
+                    let result = jQuery.parseJSON(func);
+                    alert("Guncelleme basarili");
+                }
+            })
+        });
+    </script>
+}

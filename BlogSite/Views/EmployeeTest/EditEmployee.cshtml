@@ -1,0 +1,17 @@
+﻿@model BlogSite.Controllers.Class1
+@{
+    ViewData["Title"] = "EditEmployee";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>EditEmployee</h1>
+
+<form method="post">
+    <label>#</label>
+    @Html.TextBoxFor(x=>x.Id, new{@class="form-control"})
+    <br />
+    <label>#</label>
+    @Html.TextBoxFor(x=>x.Name, new{@class="form-control"})
+    <br />
+    <button type="submit" class="btn btn-outline-success">Guncelle</button>
+</form>

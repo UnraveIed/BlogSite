@@ -1,0 +1,15 @@
+﻿@using BlogSite.Controllers
+@model Class1
+@{
+    ViewData["Title"] = "AddEmployee";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>AddEmployee</h1>
+
+<form method="post" class="form">
+    <label>Calisan Adi Soyadi</label>
+    <input asp-for="Name" type="text" class="form-control" />
+    <br />
+    <button type="submit" class="btn btn-outline-primary">Calisan Ekle</button>
+</form>

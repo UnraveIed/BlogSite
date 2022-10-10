@@ -63,6 +63,11 @@ namespace BlogSite.Controllers
             return View();
         }
 
+        public IActionResult Deneme()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> DeleteEmployee(int id)
         {
             var httpClient = new HttpClient();

@@ -1,7 +1,11 @@
-﻿<div class="comment-top">
+﻿@{
+    var blogId = Context.Request.RouteValues["id"];
+}
+
+<div class="comment-top">
     <h4>Bir Yorum Yapin</h4>
     <div class="comment-bottom">
-        <form method="post">
+        <form method="post" asp-action="PartialAddComment" asp-controller="Comment">
         <input class="form-control" type="text" id="txtName" placeholder="Adiniz Soyadiniz" required="">
         <input class="form-control" type="text" id="txtTitle" placeholder="Baslik" required="">
 
@@ -13,13 +17,16 @@
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script type="text/javascript">
-$("#yorum").click(function() {
+$("#yorum").click(function(e) {
+    e.preventDefault();
     let values = {
         UserName: $("#txtName").val(),
         Title: $("#txtTitle").val(),
-        Content: $(".tContent").val()
+        Content: $(".tContent").val(),
+        BlogId: @blogId
     };
 
     $.ajax({
@@ -27,8 +34,10 @@ $("#yorum").click(function() {
         url: "@Url.Action("PartialAddComment","Comment")",
         data : values,
         success: function(func) {
-            let result = jQuery.parseJSON(func);
-            alert("Basariyla eklendi.");
+                swal("Tesekkurler!", "Yorumunuz icin tesekkurler!", "success").then(function(){
+                    window.location.reload();
+                });
+                
         }
     });
 })

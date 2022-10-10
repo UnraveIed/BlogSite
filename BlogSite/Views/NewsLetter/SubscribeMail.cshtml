@@ -1,27 +1,26 @@
 ﻿<div class="tech-btm">
 
     <p>Yazilim dunyasindan haberdar ol</p>
-    <form method="post">
-        <input type="email" placeholder="Email" required="" id="txtmail">
-        <input type="submit" id="btnAdd" value="Subscribe">
+    <form method="post" asp-action="SubscribeMail" asp-controller="NewsLetter">
+        <input type="email" placeholder="Email" id="txtmail" required>
+        <input type="submit" id="btnAdd" value="Abone Ol"/>
     </form>
 
 </div>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
 <script type="text/javascript">
-    $("#btnAdd").click(function() {
+    $("#btnAdd").click(function(e) {
+        debugger;
+        e.preventDefault();
         let values = {
             Mail: $("#txtmail").val(),
         };
 
         $.ajax({
             type: "post",
-            url: "/NewsLetter/SubscribeMail/",
+            url: "/NewsLetter/SubscribeMail",
             data: values,
-            success: function() {
+            success: function(func) {
                 swal("Basarili!", "Mailiniz basariyla gonderilmistir!", "success");
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -31,7 +30,5 @@
     });
 </script>
 
-
-
-
-@*action="/NewsLetter/SubscribeMail/"*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

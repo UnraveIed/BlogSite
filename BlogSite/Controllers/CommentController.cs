@@ -1,11 +1,13 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace BlogSite.Controllers
 {
+    [AllowAnonymous]
     public class CommentController : Controller
     {
         CommentManager cm = new CommentManager(new EfCommentRepository());
@@ -25,7 +27,6 @@ namespace BlogSite.Controllers
         {
             c.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             c.Status = true;
-            c.BlogId = 10;
             cm.Add(c);
             return PartialView();
         }

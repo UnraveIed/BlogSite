@@ -13,6 +13,8 @@ namespace BlogSite.Controllers
             return View(values);
         }
 
+       
+
         public PartialViewResult SocialMediaAbout()
         {
             

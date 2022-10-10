@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.Writer
+﻿@model EntityLayer.Concrete.AppUser
 @{
     ViewData["Title"] = "WriterEditProfile";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
@@ -14,17 +14,22 @@
                 <p class="card-description"> Basic form elements </p>
                 <form class="forms-sample">
                     <div class="form-group">
-                        @Html.HiddenFor(x=> x.WriterId, new {@class = "form-control"})
+                        <label for="exampleInputEmail3">Username</label>
+                        @Html.TextBoxFor(x=> x.UserName, new {@class = "form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.HiddenFor(x=> x.Id, new {@class = "form-control"})
                         <label for="exampleInputName1">Name</label>
-                        @Html.TextBoxFor(x=> x.Name, new {@class = "form-control"})
+                        @Html.TextBoxFor(x=> x.NameSurname, new {@class = "form-control"})
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail3">Email address</label>
-                        @Html.TextBoxFor(x=> x.Mail, new {@class = "form-control"})
+                        @Html.TextBoxFor(x=> x.Email, new {@class = "form-control"})
                     </div>
+                    
                     <div class="form-group">
                         <label for="exampleInputPassword4">Password</label>
-                        @Html.TextBoxFor(x=>x.Password, new{@class="form-control"})
+                        @Html.TextBoxFor(x=>x.PasswordHash, new{@class="form-control"})
                     </div>
                     <div class="form-group">
                         <label>Yazar Gorsel</label>
@@ -36,10 +41,10 @@
                             </span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label for="exampleTextarea1">Yazar Hakkinda</label>
                         @Html.TextAreaFor(x=> x.About, 10,3, new {@class="form-control"})
-                    </div>
+                    </div>*@
                     <button type="submit" class="btn btn-gradient-primary mr-2">Guncelle</button>
                     <button class="btn btn-light">Iptal</button>
                 </form>

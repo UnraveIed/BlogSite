@@ -27,8 +27,6 @@ builder.Services.AddMvc(config =>
     config.Filters.Add(new AuthorizeFilter(policy));
 });
 
-builder.Services.AddMvc();
-
 //Giris yapmamis kisileri ayni sayfaya yonlendiriyor.
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(x=>

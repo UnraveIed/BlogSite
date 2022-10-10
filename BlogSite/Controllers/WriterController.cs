@@ -1,10 +1,12 @@
 ﻿using BlogSite.Models;
 using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogSite.Controllers
@@ -12,6 +14,14 @@ namespace BlogSite.Controllers
     public class WriterController : Controller
     {
         WriterManager _writer = new WriterManager(new EfWriterRepository());
+
+        private readonly UserManager<AppUser> _userManager;
+
+        public WriterController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -43,10 +53,16 @@ namespace BlogSite.Controllers
         }
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult WriterEditProfile()
+        public async Task<IActionResult> WriterEditProfile()
         {
-            var writerValues = _writer.GetById(int.Parse(User.Identity.Name));
-            return View(writerValues);
+            Context c = new Context();
+            //var userMail = context.Users.Where(x => x.UserName == User.Identity.Name).Select(x => x.Email).FirstOrDefault();
+            //var userId = context.Writers.Where(x => x.Mail == userMail).Select(x => x.WriterId).FirstOrDefault();
+            //var writerValues = _writer.GetById(userId);
+            //return View(writerValues);
+
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            return View(user);
         }
         [AllowAnonymous]
         [HttpPost]

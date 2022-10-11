@@ -61,28 +61,43 @@ namespace BlogSite.Controllers
             //var writerValues = _writer.GetById(userId);
             //return View(writerValues);
 
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            return View(user);
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            UserUpdate_VM model = new();
+            model.Mail = values.Email;
+            model.NameSurname = values.NameSurname;
+            model.ImageUrl = values.ImageUrl;
+            model.UserName = values.UserName;
+
+            return View(model);
         }
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult WriterEditProfile(Writer model)
+        public async Task<IActionResult> WriterEditProfile(UserUpdate_VM model)
         {
-            WriterValidator wl = new WriterValidator();
-            ValidationResult result = wl.Validate(model);
-            if (result.IsValid)
-            {
-                _writer.Update(model);
-                return RedirectToAction("Index", "Dashboard");
-            }
-            else
-            {
-                foreach (var item in result.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
-            }
-            return View();
+            //WriterValidator wl = new WriterValidator();
+            //ValidationResult result = wl.Validate(model);
+            //if (result.IsValid)
+            //{
+            //    _writer.Update(model);
+            //    return RedirectToAction("Index", "Dashboard");
+            //}
+            //else
+            //{
+            //    foreach (var item in result.Errors)
+            //    {
+            //        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+            //    }
+            //}
+
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            values.NameSurname = model.NameSurname;
+            values.ImageUrl = model.ImageUrl;
+            values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.Password);
+            values.Email = model.Mail;
+
+            var result = await _userManager.UpdateAsync(values);
+
+            return RedirectToAction("Index","Dashboard");
         }
 
         [AllowAnonymous]

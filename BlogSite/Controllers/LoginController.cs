@@ -44,6 +44,12 @@ namespace BlogSite.Controllers
             
         }
 
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index","Login");
+        }
+
 
 
         //[HttpPost] 

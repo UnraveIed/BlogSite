@@ -42,6 +42,11 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
+        public List<Comment> GetCommentWithBlog()
+        {
+            return _commentDal.GetListWithBlog();
+        }
+
         public void Update(Comment entity)
         {
             throw new NotImplementedException();

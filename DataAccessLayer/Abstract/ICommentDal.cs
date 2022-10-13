@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface ICommentDal : IBaseDal<Comment>
     {
+        List<Comment> GetListWithBlog();
     }
 }

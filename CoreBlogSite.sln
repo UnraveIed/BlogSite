@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{86D4CB49-65A8-412F-95E9-8CAE937283BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{A730E119-1901-44F2-8B93-ED6DE6066AA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{A730E119-1901-44F2-8B93-ED6DE6066AA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAPI", "JwtAPI\JwtAPI.csproj", "{BF176170-75A2-4A69-942E-21A08D1642EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A730E119-1901-44F2-8B93-ED6DE6066AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A730E119-1901-44F2-8B93-ED6DE6066AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A730E119-1901-44F2-8B93-ED6DE6066AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF176170-75A2-4A69-942E-21A08D1642EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF176170-75A2-4A69-942E-21A08D1642EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF176170-75A2-4A69-942E-21A08D1642EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF176170-75A2-4A69-942E-21A08D1642EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -50,6 +50,11 @@ namespace BlogSite.Controllers
             return RedirectToAction("Index","Login");
         }
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
 
 
         //[HttpPost] 
